@@ -45,19 +45,21 @@ module.exports.initialize =function(conf){
 				})
 				module.exports[table].create = function(newObj){
 					dfd = deferred()
-					conn.query('INSERT INTO '+table+' SET ?', newObj, function(err, result){
+					var q = conn.query('INSERT INTO '+table+' SET ?', newObj, function(err, result){
 						if(err)dfd.reject(err)
 						else dfd.resolve(result.insertId)
 					})
+					if (conf.logSQL) console.log(q.sql)
 					return dfd.promise
 				}
 				module.exports[table].get = function(obj){
 					dfd = deferred()
 					whereClause = _.keys(obj).length>0?' WHERE '+ whereClauseFromObject(obj):''
-					conn.query('SELECT * FROM '+table+whereClause, function(err, rows){
+					var q = conn.query('SELECT * FROM '+table+whereClause, function(err, rows){
 						if(err)dfd.reject(err)
 						else dfd.resolve(rows)
 					})
+					if (conf.logSQL) console.log(q.sql)
 					return dfd.promise
 					
 				}
@@ -65,18 +67,20 @@ module.exports.initialize =function(conf){
 					var id = newObj.id;
 					delete newObj.id;
 					dfd = deferred()
-					conn.query('UPDATE '+table+' SET ? WHERE id=?', [newObj, id], function(err, result){
+					var q = conn.query('UPDATE '+table+' SET ? WHERE id=?', [newObj, id], function(err, result){
 						if(err)dfd.reject(err)
 						else dfd.resolve(result.insertId)
 					})
+					if (conf.logSQL) console.log(q.sql)
 					return dfd.promise
 				}
 				module.exports[table].remove = function(obj){
 					dfd = deferred()
-					conn.query('DELETE FROM '+table+' WHERE '+whereClauseFromObject(obj), function(err, result){
+					var q = conn.query('DELETE FROM '+table+' WHERE '+whereClauseFromObject(obj), function(err, result){
 						if(err)dfd.reject(err)
 						else dfd.resolve()
 					})
+					if (conf.logSQL) console.log(q.sql)
 					return dfd.promise
 				}
 				return dfd

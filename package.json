@@ -1,18 +1,33 @@
 {
   "name": "mysql-object-persistence",
-  "version": "0.0.2",
-  "description": "",
+  "version": "0.0.3",
+  "description": "This package manages migrations of sql (inspired by flyway) and reads the database schema to expose crud operations on the data. This is for someone who doesn't need something as heavy as an ORM and hates the idea of duplicating data definitions in their JavaScript code.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Hurricane Hamilton",
-  "repository": "github:hhamilto/mysql-object-persistence",
+  "author": {
+    "name": "Hurricane Hamilton"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hhamilto/mysql-object-persistence.git"
+  },
   "license": "ISC",
   "dependencies": {
     "async": "^0.9.0",
     "deferred": "^0.7.2",
     "lodash": "^3.8.0",
     "mysql": "^2.6.2"
-  }
+  },
+  "readme": "# MySQL javascript object persistence framework\n\nThis package manages migrations of sql (inspired by flyway) and reads the database schema to expose crud operations on the data. This is for someone who doesn't need something as heavy as an ORM and hates the idea of duplicating data definitions in their JavaScript code.\n",
+  "readmeFilename": "README.md",
+  "gitHead": "cdc424dfa5c27ab993d315e8a791bac7a32a5416",
+  "bugs": {
+    "url": "https://github.com/hhamilto/mysql-object-persistence/issues"
+  },
+  "homepage": "https://github.com/hhamilto/mysql-object-persistence#readme",
+  "_id": "mysql-object-persistence@0.0.2",
+  "_shasum": "d940f7d5a0539159317548dee088015b35169368",
+  "_from": "mysql-object-persistence@0.0.2"
 }
