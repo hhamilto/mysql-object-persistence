@@ -60,7 +60,6 @@ createMigrationTableIfNotExist = function(migrationConn,conf){
 			var filterObj = {}
 			filterObj['Tables_in_'+conf.database.database] = 'Migrations'
 			if(_.filter(results, filterObj).length == 0){
-				console.log(path.join(__dirname,'createMigrationTable.sql'))
 				fs.readFile(path.join(__dirname,'createMigrationTable.sql'), function(err, createMigrationTableSql){
 					if (err) {
 						dfd.reject(err)
